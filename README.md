@@ -27,6 +27,9 @@ Para ejecutar el servidor de angular se ejecuta el siguiente comando, este coman
 
 *`template`* : Puedes poner tu documento html aqui tambien, pero lo mejor seria separar la vista de la logica lo mas posible.
 
+*`CommonModule`* : Son aquellos componentes que son dependientes de sus modulos
+
+*`imports en @Component`* : Se utiliza para importar modulos o componentes que el componente necesita para funcionar.
 
 ## Estructuras de Carpetas Sencilla
 

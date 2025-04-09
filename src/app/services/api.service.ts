@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs'
 
-interface ResponseJson {
+
+export interface ResponseJson {
   userId: number
   id: number
   title: string
@@ -14,7 +15,7 @@ interface ResponseJson {
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = "https://jsonplaceholder.typicode.com/todos/1"
+  private apiUrl = "https://jsonplaceholder.typicode.com/todos"
 
   constructor(private http : HttpClient) { }
 

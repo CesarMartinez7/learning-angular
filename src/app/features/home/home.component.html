@@ -1,3 +1,17 @@
 <div class="w-full h-full bg-amber-300">
    <h1 class="text-gray-800">Hello {{name}} </h1> 
+
+   <div *ngIf="data.length > 0; else loading">
+      <ul>
+        <li *ngFor="let item of data">
+          <strong>{{ item.title }}</strong>
+          <p>{{ item.body }}</p>
+        </li>
+      </ul>
+    </div>
+    
+    <ng-template #loading>
+      <p>Cargando datos...</p>
+    </ng-template>
+    
 </div>
