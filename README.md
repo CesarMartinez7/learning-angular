@@ -52,8 +52,21 @@ Para ejecutar el servidor de angular se ejecuta el siguiente comando, este coman
 ```
 
 Angular para componentes grandes la mejor manera de escribir los componentes en features si son rutas o components carpeta por si es una carpeta, dentro de estos directorios debe ir el archivo __TS__ el archivo __CSS__ el archivo __HTML__ y opcional el de las rutas de ese componente para manejar esa ruta
-## Rutas
+
+## Rutas Angular v19
 Para manejar las rutas de angular se necesita el archivo app.route.ts, funciona similar al outlet de javascript, mejor dicho en react para poner que queremos poner se envuelve ese componente dentro de ello
+
+```ts
+import { Routes } from "..."
+import { NormalComponent } from "..."
+
+export const routes: Routes = [
+    { path: "" , component: NormalComponent }
+];
+
+```
+
+Recibe una lista de objectos que contiene la ruta junto a al elemento, similar a la sintaxis de  `react-router-dom`
 
 ## Comandos Basicos
 
@@ -147,4 +160,3 @@ Evento __submit__
 ```ts
 (submit) = "nombreFuncion()"
 ```
-# learning-angular
