@@ -29,7 +29,10 @@ Para ejecutar el servidor de angular se ejecuta el siguiente comando, este coman
 
 *`CommonModule`* : Son aquellos componentes que son dependientes de sus modulos
 
-*`imports en @Component`* : Se utiliza para importar modulos o componentes que el componente necesita para funcionar.
+*`imports en @Component`* : Se utiliza para importar modulos o componentes que el componente necesita para funcionar. Por ejemmplo al utilizar standalone y querer utilizar el *ng necesitamos importar el CommonModule para que este traiga esas funcionalidades
+
+` ngOnInit`: Se ejecuta despues que angular crea el componente perfecto para ejecutar llamadas apis y todo lo demas, mucho mas recomendable que el metodo constructor de Angular , para implementar algo de el se utiliza la herencia de __JS__ con el implements metodo de clase.
+
 
 ## Estructuras de Carpetas Sencilla
 

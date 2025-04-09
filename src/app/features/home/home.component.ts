@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule]
 })
 export class HomeComponent implements OnInit {
-  name = "jdsfj"
+  name : string = "jdsfj"
   data: ResponseJson[] = [];  // Almacena la respuesta de la API
 
   constructor(private apiService: ApiService) {}  // 👈 Inyecta el servicio
