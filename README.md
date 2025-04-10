@@ -1,21 +1,28 @@
+
 # Aprendiendo Angular 
 
 Para empezar es necesario tener instalado la version de node especifica segun el proyecto que quieras iniciar tmb me recomendaron la version 16 de angular porque suele ser muy estable.
 
 Primer paso es tener ng instalado, si no esta instalado se tiene que instalar con el siguiente comando de forma global
 
-```
-npm install -g @angular/cli
+```bash
+npm install -g @angular/cli 
 ```
 
 Para ejecutar el servidor de angular se ejecuta el siguiente comando, este comando compila y lanza un puerto que servira al proyecto en modo desarrollo
-```
-    ng serve
+
+```bash
+    ng serve && npm start
 ```
 
 ## Conceptos de Angular
 
-*`Servicios`* :  Los servicios podriamos decir que son los llamados customHooks de react que nos permiten llevar la logica de un componente para que puedan ser reautilizados, o simplemente llevarlos fueras de componente principal, La verdadera `Definicion` es que son simplemente clases que nos permiten encapsular logica reutilizable y permite la comunicacion entre un componente
+*`Que es un pipe:`* Los pipes son funciones que se ejecutan antes de mostrarse en la vista, mejor dicho son  funciones que se transforman antes de mostrarse en la vista del usuario y se utilizan junto a la __interpolacion__ y se utilizan con el operador `|`
+
+
+
+*`Servicios`* :  Los servicios podriamos decir que son los llamados customHooks de react que nos permiten llevar la logica de un componente para que puedan ser reautilizados, o simplemente llevarlos fueras de componente principal, La verdadera 
+`Definicion` es que son simplemente clases que nos permiten encapsular logica reutilizable y permite la comunicacion entre un componente
 
 *`RxJS`*: React Extensiones para Javascript.
 
@@ -32,6 +39,8 @@ Para ejecutar el servidor de angular se ejecuta el siguiente comando, este coman
 *`imports en @Component`* : Se utiliza para importar modulos o componentes que el componente necesita para funcionar. Por ejemmplo al utilizar standalone y querer utilizar el *ng necesitamos importar el CommonModule para que este traiga esas funcionalidades
 
 ` ngOnInit`: Se ejecuta despues que angular crea el componente perfecto para ejecutar llamadas apis y todo lo demas, mucho mas recomendable que el metodo constructor de Angular , para implementar algo de el se utiliza la herencia de __JS__ con el implements metodo de clase.
+
+
 
 
 ## Estructuras de Carpetas Sencilla
@@ -118,11 +127,6 @@ El comando generara un directorio que tendra el componente de angular o ts y tam
 
 
 
-<!-- ## A
-
-..... -->
-
-
 ## Manejo de Eventos en Angular
 
 En angular los eventos funcionan algo similar a react o la mayoria de framework o modulos javascript, su sintaxi es sencilla
@@ -165,4 +169,131 @@ Evento __input__
 Evento __submit__
 ```ts
 (submit) = "nombreFuncion()"
+```
+## Templates 
+
+ En angular los templates son pedazos de codigo HTML que nos permite y nos sirve para escribir algunas caracteristicas de angular y no es necesario incluir etiquetas como `<body>` `<base>` `<html>` y se ignora la etiqueta `<script>` por seguridad, y esta definidos solo para definir la interfaz o diretris
+
+ ##  Binding Syntax
+
+ El encuadernamiento de datos nos permite personalizar el HTML especificando valores con atributos de cadena desde el HTML , lo q nos propociona el encuadernamiento de datos es simplemente inicializar esta parte, como por dicho desde el __JS__ o __Angular__ en vez del HTML, es decir que funcionan desde el doom:
+
+ Ejemplos de personlizacion de los atributos de cadena desde javascript
+
+### Los cuatro tipos de Biding syntax son
+
+#### Interpolation - Interpolacion
+
+`app.component.html`
+``` html
+<p>{{ name }}</p>
+```
+`app.component.ts`
+
+```ts
+export default class AppComponent {
+    name: string = "Soy angulativo"
+}
+```
+
+#### Property Binding 
+
+`app.component.html`
+```html
+<input [value]="message" />
+```
+`app.component.ts`
+```ts
+export default class AppComponent {
+    message = "Hello soy el valor de un input 😂"
+}
+```
+
+#### Event Binding 
+
+`app.component.html`
+```html
+<button (click)="funcionARealizar()" >Presioname</button>
+```
+`app.component.html`
+
+
+#### Two-Way biding
+
+
+
+## Renderizado de clases condicional
+
+Angular tiene su propia directiva llamada `ngClass` que nos permite darle estilos condicionales a una etiqueta de html y hay diferentes formas de hacerlo, en un `string`, `array` y en un `objeto`, le pasamos nuestro argumento, algo sencillo como un ternario estaria bien y despues nuestras clases para que se ejecuten dependiendo de la funcion
+
+
+### Sintaxis
+```html
+<button [ngClass]="<expresion_si_si> ? ´clase_si_Si´ : ´clase_si_No´ " >Presioname</button>
+```
+
+## Signals
+
+Los signals son una nuevo manejo de estado hecho por angular similares a los estados de `react`, tienen un effect y asi como señales, cuando algo cambia este verifica si cambia algo en la ui y lo actualiza, la diferencia de las señales con los estados de react es que los señales estan hecos para una mejor optimizacion, ademas que tiene diferentes metods que podrian ayudarnos y no solo un `setteador`.
+
+### Sintaxis
+
+```ts
+
+const contador = signals(0);
+
+handleChangeContador (){
+    this.contador.set(this.contador() + 1)
+}
+
+```
+
+
+## Tipos de Pipes
+
+Pipes de string 
+
+```
+{{"hola mundo" | uppercase }}
+{{"hola mundo" | lowercase }}
+```
+
+Pipes de fecha `fecha`
+```
+{{fecha | date:"dd/MM/yyyy"}}
+
+```
+Pipes de formato de moneda o `currency`
+```
+{{fecha | date:"dd/MM/yyyy"}}
+
+```
+
+Pipes de `json`
+ 
+```
+{{data | json}}
+```
+
+> [!NOTE]
+> Se pueden crear Pipes personalizables .
+
+En resumen los pipes son funciones que se transforman antes de mostrarse en la vista y se utilizan con el operador | en las plantillas de Angular y nos permiten hacer cosas simples para la vista del usuario
+
+## Comandos Angular Cli
+
+```
+ng generate component
+```
+
+```
+ng generate module
+```
+
+```
+ng generate service
+```
+
+```
+ng generate directive
 ```
