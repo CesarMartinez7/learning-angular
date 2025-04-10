@@ -1,21 +1,31 @@
-
-<div class="w-full h-full  p-12">
-   
-
+<div class="w-full h-full p-12">
   <pre>
-    {{jsonify | json}}
+    {{ jsonify | json }}
   </pre>
 
-    <ol class="flex flex-col gap-2">
-      
-      <li *ngFor="let item of data" class="shadow p-2 flex flex-col">
-        <span>{{item.userId | currency}}</span>
-        <span class="btn">{{item.title | titlecase}}</span>
-      </li>
-    </ol>
-
-    <ng-template #loading>
-      <p>Cargando datos...</p>
-    </ng-template>
-    
+  <ul class="flex gap-2 flex-col">
+    @for (iteme of jsonify; track $index) {
+    <li
+      class="px-4 py-2 flex flex-row justify-between w-full shadow border-1 border-slate-100 rounded-md"
+    >
+    <div class="flex flex-col">
+      <span>{{ iteme.nombre | titlecase }}</span>
+      <span class="text-sm">{{ iteme.descripcion}}</span>
+    </div>
+      <span
+        class="rounded shadow p-1"
+        [ngClass]="
+          iteme.stock ? 'text-cyan-300 bg-cyan-600 ' : 'text-red-300 bg-red-600'
+        "
+      >
+        @if (iteme.stock) {
+        {{ "Activo" }}
+        }@else {
+        {{ "Desactivado" }}
+        }
+      </span>
+      <button-pressed></button-pressed>
+    </li>
+    }
+  </ul>
 </div>

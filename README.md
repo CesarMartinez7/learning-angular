@@ -1,6 +1,6 @@
 
-# Aprendiendo Angular 
-
+# Aprendiendo Angular 19
+ 
 Para empezar es necesario tener instalado la version de node especifica segun el proyecto que quieras iniciar tmb me recomendaron la version 16 de angular porque suele ser muy estable.
 
 Primer paso es tener ng instalado, si no esta instalado se tiene que instalar con el siguiente comando de forma global
@@ -253,25 +253,24 @@ handleChangeContador (){
 
 Pipes de string 
 
-```
+```ts
 {{"hola mundo" | uppercase }}
 {{"hola mundo" | lowercase }}
 ```
 
 Pipes de fecha `fecha`
-```
+```ts
 {{fecha | date:"dd/MM/yyyy"}}
 
 ```
 Pipes de formato de moneda o `currency`
-```
+```ts
 {{fecha | date:"dd/MM/yyyy"}}
-
 ```
 
 Pipes de `json`
  
-```
+```ts
 {{data | json}}
 ```
 
@@ -282,18 +281,63 @@ En resumen los pipes son funciones que se transforman antes de mostrarse en la v
 
 ## Comandos Angular Cli
 
-```
+```sh
 ng generate component
 ```
 
-```
+```bash
 ng generate module
 ```
 
-```
+```bash
 ng generate service
 ```
 
-```
+```bash
 ng generate directive
+```
+
+# Decoradores en Angular 
+
+
+    @Component: se utiliza para definir un componente en Angular. Se utiliza para especificar la plantilla, estilos y metadatos asociados con el componente.
+    @Directive: se utiliza para definir una directiva personalizada en Angular. Las directivas se utilizan para agregar comportamientos específicos a elementos de la interfaz de usuario.
+    @NgModule: se utiliza para definir un módulo en Angular. Los módulos se utilizan para agrupar componentes, directivas, servicios y otros objetos relacionados entre sí.
+    @Pipe: se utiliza para definir una tubería en Angular. Las tuberías se utilizan para transformar datos en tiempo real en una plantilla.
+    @Injectable: se utiliza para definir un servicio en Angular. Los servicios son una forma de compartir datos y funcionalidades entre componentes.
+    @Input: se utiliza para definir una propiedad de entrada en un componente. Las propiedades de entrada se utilizan para pasar datos a un componente desde un componente padre.
+    @Output: se utiliza para definir un evento en un componente. Los eventos se utilizan para enviar datos desde un componente hijo a un componente padre.
+    @HostBinding: se utiliza para enlazar una propiedad de un componente a una propiedad del elemento DOM que lo contiene.
+    @HostListener: se utiliza para escuchar eventos del elemento DOM que contiene el componente.
+    @ContentChild: se utiliza para obtener una referencia al primer elemento secundario coincidente de un componente.
+    @ContentChildren: se utiliza para obtener una referencia a todos los elementos secundarios coincidentes de un componente.
+    @ViewChild: se utiliza para obtener una referencia al primer elemento hijo coincidente de un componente.
+    @ViewChildren: se utiliza para obtener una referencia a todos los elementos hijos coincidentes de un componente.
+    @Attribute: se utiliza para obtener el valor de un atributo en un elemento DOM.
+    @Self: se utiliza para indicar que una inyección de dependencia debe ser resuelta solo en el propio componente.
+    @Optional: se utiliza para indicar que una inyección de dependencia es opcional y no causará un error si no se puede resolver.
+    @SkipSelf: se utiliza para indicar que una inyección de dependencia debe ser resuelta por un componente superior en la jerarquía de componentes.
+    @Inject: se utiliza para especificar un proveedor de inyección de dependencia personalizado en un componente.
+
+
+# Cosas a tener en cuenta
+
+Me llevo 5 minutos arreglar una interfaz y fue simplemente porque la interfaz que puse se encontraba debajo del decorador `@Component` algo que sin escusa tiene sentido ya q este espera si o si un componente en clase, pero es algo a tener en cuenta sin duda.
+
+
+# Pensamientos propios
+
+Creo que ya voy entendiendo el sistema de modulos y el standalone al menos lo que creo, el standalone lo que nos permite es tener los mismos importes como si fuera en un @ngModule o algo asi, ya se me olvido
+
+
+# Importacion De Componentes En Angular
+
+La importacion de componentes en angular al menos en la ultima version permite importarlo en ponerlo en componentes padres, solo hace falta importar ese componente en los imports de la metadata del componente padre
+
+```ts
+@Component({
+    selector: "app-padre",
+    imports: [ ComponenteHijo ]
+    standalone: true
+})
 ```
