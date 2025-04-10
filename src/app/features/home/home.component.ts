@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { ResponseJson } from '../../services/api.service';
 import ButtonPress from '../../components/buttonPressed/button.component';
 import { CommonModule } from '@angular/common';
+import { Signal } from '@angular/core';
 
 interface Jsonify {
   id: number;
@@ -105,12 +106,20 @@ export class HomeComponent implements OnInit {
   name: string = 'Cesar';
   data: ResponseJson[] = [];
 
-  constructor(private apiService: ApiService) {}
+  contador = signal(0)
 
+  constructor(private apiService: ApiService) {}
+  
   ngOnInit(): void {
     this.apiService.getUsers().subscribe((response) => {
       this.data = response; // Guardamos la respuesta
       console.log(this.data); // Ver en consola
     });
   }
+
+
+  onClickAumented () {
+    this.contador.set(this.contador() + 1)
+  }
+
 }

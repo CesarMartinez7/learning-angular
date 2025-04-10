@@ -11,13 +11,12 @@
     <div class="flex flex-col">
       <span>{{ iteme.nombre | titlecase }}</span>
       <span class="text-sm">{{ iteme.descripcion}}</span>
+      <span (click)="onClickAumented()">{{contador()}}</span>
     </div>
       <span
-        class="rounded shadow p-1"
+        class="rounded shadow p-1 w-16 whitespace-nowrap"
         [ngClass]="
-          iteme.stock ? 'text-cyan-300 bg-cyan-600 ' : 'text-red-300 bg-red-600'
-        "
-      >
+          iteme.stock ? 'text-cyan-300 bg-cyan-600 ' : 'text-red-300 bg-red-600'">
         @if (iteme.stock) {
         {{ "Activo" }}
         }@else {

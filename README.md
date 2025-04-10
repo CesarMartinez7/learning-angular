@@ -341,3 +341,9 @@ La importacion de componentes en angular al menos en la ultima version permite i
     standalone: true
 })
 ```
+
+
+# Routing Angular 19
+
+Para el routing se necesita el archivo app.route.ts, aqui se definiran las rutas, muy similar a react router doom para ser especificos tiene la misma sintaxis y se espera la ruta principal
+
