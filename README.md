@@ -330,6 +330,8 @@ ng generate directive
 Me llevo 5 minutos arreglar una interfaz y fue simplemente porque la interfaz que puse se encontraba debajo del decorador `@Component` algo que sin escusa tiene sentido ya q este espera si o si un componente en clase, pero es algo a tener en cuenta sin duda.
 
 
+❌ Los pipes no funcionan dentro de bucles @for una cosa demasiado rara en angular
+
 # Pensamientos propios
 
 Creo que ya voy entendiendo el sistema de modulos y el standalone al menos lo que creo, el standalone lo que nos permite es tener los mismos importes como si fuera en un @ngModule o algo asi, ya se me olvido

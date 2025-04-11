@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 
 @Component({
@@ -11,12 +12,19 @@ import { FormsModule } from '@angular/forms';
 })
 export class FormularioComponent {
 
+  inputs = [
+    {nombre: "nombre", type: "text"},
+    {nombre: "apellido", type: "text"},
+    {nombre: "email", type: "email"},
+    {nombre: "direccion", type: "text"}
+  ]
+
   readonly form: FormGroup 
 
   constructor(fb: FormBuilder){
     this.form = fb.group({
-      nombre: "",
-      apelliddo: "",
+      nombre: ["",[Validators.required]],
+      apellido: "",
       email: "",
       direccion: ""
     
