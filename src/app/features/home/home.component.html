@@ -1,32 +1,24 @@
-<div class="w-full h-full p-12">
-  <pre>
-    {{ jsonify | json }}
-  </pre>
-
-  <ul class="flex gap-2 flex-col">
-    @for (iteme of jsonify; track $index) {
-    <li
-      class="px-4 py-2 flex flex-row justify-between w-full shadow border-1 border-slate-100 rounded-md"
-    >
-    <div class="flex flex-col">
-      <span>{{ iteme.nombre | titlecase }}</span>
-      <span class="text-sm">{{ iteme.descripcion}}</span>
-      <span (click)="onClickAumented()">{{contador()}}</span>
-    </div>
-      <span
-        class="rounded shadow p-1 w-16 whitespace-nowrap"
-        [ngClass]="
-          iteme.stock ? 'text-cyan-300 bg-cyan-600 ' : 'text-red-300 bg-red-600'">
-        @if (iteme.stock) {
-        {{ "Activo" }}
-        }@else {
-        {{ "Desactivado" }}
-        }
-      </span>
-      <button-pressed></button-pressed>
-    </li>
-    }@empty {
-      <li>No hay ningun item</li>
+<main class="w-full h-full p-3 md:p-12">
+  <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-7 gap-4">
+    @defer {
+      @for (item of bookGet.value()?.docs; track item.cover_i) {
+      <li class="shadow-md p-4 flex flex-col rounded-md gap-1 ">
+        <div class="">
+          <img
+            class="rounded-md max-h-full w-full object-cover hover:scale-105 transition duration-150"
+            src="https://covers.openlibrary.org/b/id/{{ item.cover_i }}-L.jpg"
+            alt="{{ item.title }}"
+          />
+        </div>
+        <strong>{{ item.title }}</strong>
+        <p class="text-sm text-cyan-500">{{ item.author_name }}</p>
+        <p class="text-sm ">{{ item.first_publish_year}}</p>
+      </li>
+      }@empty {
+      <no-registrer message="No se encontro nada cacorro" ></no-registrer>
+      }
+    }@loading {
+      <p>Cargando</p>
     }
   </ul>
-</div>
+</main>

@@ -115,6 +115,10 @@ Aprendi cosas sencillas como el cambio de nombres en los templates y como funcio
 ```
 ng generate component <name-component> --standalone --inline-template --skip-tests
 ```
+__Altenativa con path__
+```
+ng generate component <ruta>/<name-component>
+```
 
 El comando generara un directorio que tendra el componente de angular o ts y tambien los estilos de ese componente
 
@@ -251,7 +255,9 @@ handleChangeContador (){
 
 ## Tipos de Pipes
 
-Pipes de string 
+Los pipes son funciones que se transforman algo antes de mostrarse en la vista y se hacen con el operador de `|` 
+
+Pipes de `string`
 
 ```ts
 {{"hola mundo" | uppercase }}
@@ -261,11 +267,10 @@ Pipes de string
 Pipes de fecha `fecha`
 ```ts
 {{fecha | date:"dd/MM/yyyy"}}
-
 ```
 Pipes de formato de moneda o `currency`
 ```ts
-{{fecha | date:"dd/MM/yyyy"}}
+{{fecha | currency}}
 ```
 
 Pipes de `json`
@@ -345,7 +350,7 @@ La importacion de componentes en angular al menos en la ultima version permite i
 
 # Routing Angular 19
 
-Para el routing se necesita el archivo app.route.ts, aqui se definiran las rutas, muy similar a react router doom para ser especificos tiene la misma sintaxis y se espera la ruta principal junto al componente o la ruta, el router de todas la paginas  `404`  se hacen con `**``para las paginas que no se encuentran
+Para el routing se necesita el archivo app.route.ts, aqui se definiran las rutas, muy similar a react router doom para ser especificos tiene la misma sintaxis y se espera la ruta principal junto al componente o la ruta, el router de todas la paginas  `404`  se hacen con `**` para las paginas que no se encuentran
 
 De lo demas la sintaxis de las rutas en angular 19 es practicamente igual a las rutas react router dom
 
@@ -361,18 +366,79 @@ export const routes: Routes = [
 ]
 ```
 
+## ⚙ Propiedades de Routing
 
-## For y Empty en Angular 19
+`loadComponent`: Lazy load de el routing
 
-En angular 19 la sintaxis es muy similiar a las sintaxis de el metodo `map` en React a diferencia que se ve un poco mas organizado y con un metodo bastante sencillo pero bastante util que es el `@empty`, el nombre ya describe como tal que es lo que tiene que hacer.
+
+## @For y @Empty en Angular 19
+
+En angular 19 la sintaxis es muy similiar a la del metodo `map` en React a diferencia que se ve un poco mas organizado y con un metodo bastante sencillo pero bastante util que es el `@empty`, el nombre ya describe como tal que es lo que tiene que hacer.
 
 __Ejemplo de uso__ 
 
 ```ts
-@for (item of items; track item.name){
-    <li>{{item.name}}</li>
+@for (item of items; track item.name ; let indice = $index){
+    <li> {{indice + 1}} {{item.name}}</li>
+}@empty {
+    <li>{{"Esto saldra cuando no haya nada para renderizar"}}</li>
 }
+```
+__✅ Output True | @for__
+
+```
+                        ┌─────────┬──────────┬─────────┐
+                        │ (index) │ Indice   │ Nombre  │
+                        ├─────────┼──────────┼─────────┤
+                        │    0    │    1     │ Manzana │
+                        │    1    │    2     │ Banana  │
+                        │    2    │    3     │ Cereza  │
+                        └─────────┴──────────┴─────────┘
+
+```
+__❌Output False  | @empty__
+
+```
+            ┌─────────────────────────────────────────────────────────┐
+            │            Esto saldrá cuando no haya data              │
+            └─────────────────────────────────────────────────────────┘
 ```
 
 > [!TIP]
-> El tip se podria decir que es practicamente el key que se le dan en los mapeos a las grandes en los bucles o listas, mejora el rendimiento de la web considerable mente, dando _id_ unicos para que cuando se haga un cambio angular o el framework pueda encontrar facilmente que fue lo que cambio por medio de los __id__.
+> Se podria decir que es practicamente el key que se le dan en los mapeos a las grandes en los bucles o listas, mejora el rendimiento de la web considerable mente, dando _id_ unicos para que cuando se haga un cambio angular o el framework pueda encontrar facilmente que fue lo que cambio por medio de los __id__.
+
+## Entradas @Input - property Biding
+
+Se da por medio del decorador `@Input` que nos permite pasar comunicacion o relacion de un componente a otro componente, la sitanxis se crear dentro de la clase como si fuera una propiedad o `prop` y siempre esperara una entrada como tal. Es imporntante inicilizarla porq esto es TS y sobre todo tiparla.
+
+__Ejemplo de uso__
+
+__<font color="#3178c6">son.component.ts</font>__
+```ts
+export default class SonComponent {
+    @Input() message : string = "Hola si no me mandan parametros"
+}
+```
+
+__<font color="#3178c6">father.component.ts</font>__
+
+```ts
+import SonComponent from "./sonComponent/son.component.ts"
+import {Component} from "@angular/core"
+
+@Component({
+    selector: "father-component",
+    imports: [ SonComponent ]
+})
+```
+__<font color="#e34f26">father.component.html</font>__
+```html
+<main>
+    <!-- Aqui va todo el html del componente padre -->
+    <son-component message="Hola este es el mensaje que se manda por props ☢" ></son-component>
+    <!-- Aqui va todo el html del componente padre -->
+</main>
+```
+## Uso de  @defer, @loading, @placeholder
+
+Tengo idea de como funcionan, pero en la practica no me funcionan
