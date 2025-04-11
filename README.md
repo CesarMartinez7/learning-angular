@@ -1,5 +1,5 @@
 
-# Aprendiendo Angular 19
+# Aprendiendo 🅰ngular 19
  
 Para empezar es necesario tener instalado la version de node especifica segun el proyecto que quieras iniciar tmb me recomendaron la version 16 de angular porque suele ser muy estable.
 
@@ -345,5 +345,34 @@ La importacion de componentes en angular al menos en la ultima version permite i
 
 # Routing Angular 19
 
-Para el routing se necesita el archivo app.route.ts, aqui se definiran las rutas, muy similar a react router doom para ser especificos tiene la misma sintaxis y se espera la ruta principal
+Para el routing se necesita el archivo app.route.ts, aqui se definiran las rutas, muy similar a react router doom para ser especificos tiene la misma sintaxis y se espera la ruta principal junto al componente o la ruta, el router de todas la paginas  `404`  se hacen con `**``para las paginas que no se encuentran
 
+De lo demas la sintaxis de las rutas en angular 19 es practicamente igual a las rutas react router dom
+
+__Ejemplo__
+```ts
+import HomeRoute from "./routes/homeroute/home.component.ts"
+
+export const routes: Routes = [
+    {path: "", component HomeRoute}
+            |                 |  
+            |                 |
+          "Path"          "Component"  
+]
+```
+
+
+## For y Empty en Angular 19
+
+En angular 19 la sintaxis es muy similiar a las sintaxis de el metodo `map` en React a diferencia que se ve un poco mas organizado y con un metodo bastante sencillo pero bastante util que es el `@empty`, el nombre ya describe como tal que es lo que tiene que hacer.
+
+__Ejemplo de uso__ 
+
+```ts
+@for (item of items; track item.name){
+    <li>{{item.name}}</li>
+}
+```
+
+> [!TIP]
+> El tip se podria decir que es practicamente el key que se le dan en los mapeos a las grandes en los bucles o listas, mejora el rendimiento de la web considerable mente, dando _id_ unicos para que cuando se haga un cambio angular o el framework pueda encontrar facilmente que fue lo que cambio por medio de los __id__.
