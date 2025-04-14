@@ -444,3 +444,49 @@ __<font color="#e34f26">father.component.html</font>__
 ## Uso de  @defer, @loading, @placeholder
 
 Tengo idea de como funcionan, pero en la practica no me funcionan
+
+## Injectables
+
+Los injectables en angular son una de las cosas mas importantes de el framework para se espeficos, nos permite poner dependecias en tiempo de ejecucion, una dependecia pordria ser un servicio, por ejemplo un modulo de angular, o una peticion a una api
+
+Es recomendable poner los Injectables en lugares especificos, podrian ser tales como en el directorio servicio si queremos que ese injectable este en modo global si ese injectable solo se usara en un modulo, se puede poner alli mismo
+
+## Uso ⚙
+
+Para hacer uso de una inyeccion es algo similar a la sintaxis del `useContext()` en react a diferencia que aqui no es para estados __globales__, pero es bueno tener la referencia a que la sintaxis y creacion son similares, y para hacer uso de la inyeccion ya sea de un servicio hay dos maneras de hacerlo, sea con el metodo `inject()` o sea con la sintaxis clasica de angular
+
+
+`Ventajas del metodo inject`: Sintaxis mas limpia, actualizada y no necesita del metodo constructor
+
+__Ejemplo:__
+
+```ts
+
+import GetCarsService from "../../services/cars.services.ts"
+
+class CarsComponent {
+
+    // No hace falta la ejecucion desde el metodo constructor cuando se inicializa el componente, segun lo que entiendo entonces el metodo inject(), seria buena idea utilizarlo cuando no se necesita ejecutar cuando se inicializa el componente. 🐵
+
+    carsServices = inject(GetCarsService)
+
+
+    getCar(){
+        // Input de la interfaz para ver la salida por medio de ID.
+        const idInput = this.form.value.id
+        const rs = this.carsServices.getCar(idInput)
+        // Ver el resultado de la peticion en un alerta
+        window.alert(rs)
+    }
+
+}
+
+```
+
+> [!IMPORTANT]  
+> Es importante tener en cuenta si la peticion es un observable, y, que devuelve un observable se debe tipar ese observable y este observable dara el nuevo flujo con su subscribe que sera diferente como se muestra en el ejemplo anterior.
+
+
+
+
+`Ventajas de La Sintaxis Clasica ` : Sintaxis un poco mas verbosa pero mas utilizada en proyectos sea nuevo como anteriores , ademas que hace uso del metodo constructor.{}

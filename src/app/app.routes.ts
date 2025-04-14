@@ -9,7 +9,7 @@ import { FormularioComponent } from './features/formulario/formulario.component'
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'dash', component: DashboardComponent },
-  { path: 'books',component:  FetchingComponent},
+  { path: 'books', component: FetchingComponent },
   { path: 'form', component: FormularioComponent },
-  { path: '**', component: NotFound }
+  { path: '**', component: NotFound },
 ];

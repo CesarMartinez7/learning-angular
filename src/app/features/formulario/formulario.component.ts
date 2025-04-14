@@ -1,36 +1,37 @@
-import { Component, signal } from '@angular/core';
+import { FormBuilder, FormGroup, FormGroupName } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-
+import { Component, inject, OnInit } from '@angular/core';
+import { PruebaService } from '../../services/root/prueba.service';
 
 @Component({
   selector: 'app-formulario',
   imports: [ReactiveFormsModule],
   templateUrl: './formulario.component.html',
-  styleUrl: './formulario.component.css'
+  styleUrl: './formulario.component.css',
 })
-export class FormularioComponent {
+export class FormularioComponent  {
+  form: FormGroup;
 
-  inputs = [
-    {nombre: "nombre", type: "text"},
-    {nombre: "apellido", type: "text"},
-    {nombre: "email", type: "email"},
-    {nombre: "direccion", type: "text"}
-  ]
+  carsServices = inject(PruebaService)
 
-  readonly form: FormGroup 
-
-  constructor(fb: FormBuilder){
+  constructor(fb: FormBuilder, private pruebaService: PruebaService) {
     this.form = fb.group({
-      nombre: ["",[Validators.required]],
-      apellido: "",
-      email: "",
-      direccion: ""
-    
-    })}
+      nombre: ['', [Validators.required]],
+      apellido: ['', [Validators.required]],
+      email: ['', [ Validators.required]],
+      id: ['', [Validators.required]],
+    });
+  }
 
-    mostrarDataForm(){
-      console.log(this.form.value)
-    }
+  handleSubmit() {
+    
+    this.getCars(this.form.value.id)
+  }
+
+  getCars(id: number){
+    const rs = this.pruebaService.getCar(id - 1)
+    console.log(rs)
+    
+  };
 }
