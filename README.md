@@ -17,7 +17,7 @@ Para ejecutar el servidor de angular se ejecuta el siguiente comando, este coman
 
 ## Conceptos de Angular
 
-*`Que es un pipe:`* Los pipes son funciones que se ejecutan antes de mostrarse en la vista, mejor dicho son  funciones que se transforman antes de mostrarse en la vista del usuario y se utilizan junto a la __interpolacion__ y se utilizan con el operador `|`
+*`Que es un pipe:`* Los pipes son funciones que se ejecutan antes de mostrarse en la vista, mejor dicho son  funciones que se transforman antes de mostrarse en la vista del usuario y se utilizan junto a la __interpolacion__ y se utilizan con el operador `|`. Los pipes no funcionan en los bucles @for
 
 
 
@@ -489,4 +489,25 @@ class CarsComponent {
 
 
 
-`Ventajas de La Sintaxis Clasica ` : Sintaxis un poco mas verbosa pero mas utilizada en proyectos sea nuevo como anteriores , ademas que hace uso del metodo constructor.{}
+`Ventajas de La Sintaxis Clasica ` : Sintaxis un poco mas verbosa pero mas utilizada en proyectos sea nuevo como anteriore|s , ademas que hace uso del metodo constructor.
+
+```ts
+// Here code ....
+```
+
+<!-- ### FormBuilder, FormGroup -->
+
+
+
+
+## Imagenes en angular
+
+Las imagenes en angular se cargan por lo general en el documento assets, o mejor dicho verificar las configuraciones de angular en __angular.json__ y verificar, En Angular 19 al menos las configuraciones de las imagenes se encuentran en la carpeta public y para acceder a alguna de las imagenes de esta carpeta se haria de la siguiente manera:
+
+
+```html
+<img src="/dog.png" />
+            |
+        <!-- Ruta absoluta de la imagen del perro desde ruta absoluta, angular la reconocera y la configurara enseguida para desarrollo y producccion -->
+```
+

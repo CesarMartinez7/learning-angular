@@ -10,28 +10,26 @@ import { PruebaService } from '../../services/root/prueba.service';
   templateUrl: './formulario.component.html',
   styleUrl: './formulario.component.css',
 })
-export class FormularioComponent  {
+export class FormularioComponent {
   form: FormGroup;
 
-  carsServices = inject(PruebaService)
+  carsServices = inject(PruebaService);
 
   constructor(fb: FormBuilder, private pruebaService: PruebaService) {
     this.form = fb.group({
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
-      email: ['', [ Validators.required]],
+      email: ['', [Validators.required]],
       id: ['', [Validators.required]],
     });
   }
 
   handleSubmit() {
-    
-    this.getCars(this.form.value.id)
+    this.getCars(this.form.value.id);
   }
 
-  getCars(id: number){
-    const rs = this.pruebaService.getCar(id - 1)
-    console.log(rs)
-    
-  };
+  getCars(id: number) {
+    const rs = this.pruebaService.getCar(id - 1);
+    console.log(rs);
+  }
 }

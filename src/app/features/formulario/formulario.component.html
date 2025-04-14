@@ -1,15 +1,18 @@
 <main class="w-full h-screen max-h-svh grid place-content-center">
     <form [formGroup]="form" (submit)="handleSubmit()" class=" w-lg flex flex-col shadow-lg p-4 rounded-md gap-2"  >
+        <img src="" alt="dsadahdskjd">
+        <img src="/image.png" alt="Imagen cargada correctamente">
+
         <label >
-            {{form.value.nombre}}
+            Nombre
         </label>
         <input  type="text" class="px-3 py-2 bg-slate-100 rounded-sm" formControlName="nombre" [defaultValue]="`Nombre`" >
         <label >
-            {{form.value.apellido}}
+            Apellido
         </label>
         <input type="text" formControlName="apellido" class="px-3 py-2 bg-slate-100 rounded-sm"  [defaultValue]="`Apellido`">
         <label >
-            {{form.value.email}}
+            Email
         </label>
         <input type="text" formControlName="email" [defaultValue]="`Email`" class="px-3 py-2 bg-slate-100 rounded-sm" >
         <input type="text" formControlName="id" class="px-3 py-2 bg-slate-100 rounded-sm"   >
